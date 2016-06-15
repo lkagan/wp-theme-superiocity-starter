@@ -1,5 +1,5 @@
 /*!
-Theme Name: Superiocity CVC
+Theme Name: Superiocity Starter
 Description: Basic starter theme.
 Text Domain: superiocity
 */
@@ -259,7 +259,7 @@ img {
     text-align: right;
   }
 
-  .menu-item-has-children>a:after {
+  .menu-item-has-children>a:after, .page_item_has_children>a:after {
     content: ' ▾';
   }
 
@@ -301,12 +301,12 @@ img {
       padding: .3em;
     }
 
-    li.menu-item-has-children>a:hover {
+    li.menu-item-has-children>a:hover, li.page_item_has_children>a:hover {
       text-decoration: none;
     }
   }
 
-  li .sub-menu {
+  li .sub-menu, li .children {
     opacity: 0;
     transition: opacity .3s;
     position: absolute;
@@ -328,7 +328,7 @@ img {
     }
   }
 
-  li:hover .sub-menu {
+  li:hover .sub-menu, li:hover .children {
     top: auto;
     opacity: 1;
     border-radius: .25em;
