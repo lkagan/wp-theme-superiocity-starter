@@ -17,7 +17,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( ! is_front_page() ? 'inner' : '' ); ?>>
 <div id="page" class="site">
 
 	<header id="masthead" class="site-header" role="banner">
@@ -38,9 +38,17 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			<button class="menu-open" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+			<div class="main-nav-wrapper">
+				<a href="#" class="menu-close"><i class="fa fa-close"></i> close</a>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			</div><!-- .main-nav-wrapper -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
-
 	<div id="content" class="site-content">
+		<div class='hero-container-wrapper'>
+			<div class="hero-container" id="hero-container">
+				<section class="hero">
+				</section>
+			</div><!-- .hero-container -->
+		</div><!-- .hero-conteiner-wrapper -->

@@ -12,11 +12,9 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			&copy; <?= date('Y') ?>
-			<span class="sep">|</span>
-			Website by <a target="superiocity" href="http://www.superiocity.com">Superiocity</a>
-		</div><!-- .site-info -->
+		<span class="footer-item">&copy; <?php echo date('Y') . ' ' . get_bloginfo( 'name' ) ?></span>
+		<span class="sep">|</span>
+		<span class="footer-item signature">Website by <a target="superiocity" href="http://www.superiocity.com">Superiocity</a></span>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
