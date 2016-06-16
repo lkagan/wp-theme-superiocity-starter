@@ -61,8 +61,6 @@ function superiocity_scripts_styles() {
 	wp_enqueue_style( 'superiocity-style', $mainCssUrl, null, $mainCssVer );
 	wp_deregister_script( 'jquery' );
 	wp_deregister_script( 'wp-embed' );
-	wp_deregister_script( 'wp-emoji-release.min.js' );
-
 }
 
 add_action( 'wp_enqueue_scripts', 'superiocity_scripts_styles' );
