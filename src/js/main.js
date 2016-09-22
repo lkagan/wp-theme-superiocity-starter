@@ -13,6 +13,7 @@
         // Small screen menu close 
         document.getElementsByClassName('menu-close')[0]
             .addEventListener('click', function(e) {
+                e.preventDefault();
                 document.getElementsByClassName('main-nav-wrapper')[0].classList.remove('open');
             });
 
