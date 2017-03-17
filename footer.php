@@ -14,7 +14,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<span class="footer-item">&copy; <?php echo date('Y') . ' ' . get_bloginfo( 'name' ) ?></span>
 		<span class="sep">|</span>
-		<span class="footer-item signature">Website by <a target="superiocity" href="http://www.superiocity.com">Superiocity</a></span>
+		<span class="footer-item signature"><a target="superiocity" href="http://www.superiocity.com">Website by Superiocity</a></span>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

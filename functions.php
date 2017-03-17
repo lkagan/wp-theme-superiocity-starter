@@ -59,7 +59,6 @@ function superiocity_scripts_styles() {
 	$mainCssVer  = file_exists( $mainCssPath ) ? filemtime( $mainCssPath ) : '';
 
 	wp_enqueue_style( 'superiocity-style', $mainCssUrl, null, $mainCssVer );
-	wp_deregister_script( 'jquery' );
 	wp_deregister_script( 'wp-embed' );
 }
 
