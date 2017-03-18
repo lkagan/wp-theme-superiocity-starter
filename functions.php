@@ -1,11 +1,31 @@
 <?php
 /**
- * Theme functions and definitions.
+ * Theme setup file for the Superiocity Starter theme.
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ * @package Superiocity
  */
 
-if ( ! function_exists( 'superiocity_setup' ) ) :
+declare( strict_types = 1 );
+namespace Superiocity;
+new Theme_Setup();
+
+
+/**
+ * General setup
+ */
+class Theme_Setup {
+
+	/**
+	 * Theme constructor.
+	 */
+	public function __construct() {
+
+		$this->add_features();
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
+		add_action( 'get_footer', array( $this, 'scripts_styles_footer' ) );
+	}
+
+
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -13,19 +33,13 @@ if ( ! function_exists( 'superiocity_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function superiocity_setup() {
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+	protected function add_features() {
 
-		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary', 'superiocity' ),
 		) );
+
+		add_theme_support( 'title-tag' );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -40,55 +54,45 @@ if ( ! function_exists( 'superiocity_setup' ) ) :
 		) );
 	}
 
-	superiocity_setup();
 
-endif;
+	/**
+	 * Enqueue scripts and styles.
+	 */
+	function scripts_styles() {
 
+		// No need to process if in admin.
+		if ( is_admin() ) {
+			return;
+		}
 
-/**
- * Enqueue scripts and styles.
- */
-function superiocity_scripts_styles() {
-	if ( is_admin() ) {
-		return;
+		$theme_url     = get_template_directory_uri();
+		$main_css_url  = $theme_url . '/style.css';
+		$main_css_path = get_template_directory() . '/style.css';
+		$main_css_ver  = file_exists( $main_css_path ) ? filemtime( $main_css_path ) : '';
+
+		wp_enqueue_style( 'superiocity-style', $main_css_url, null, $main_css_ver );
+		wp_deregister_script( 'wp-embed' );
 	}
 
-	$themeUrl    = get_template_directory_uri();
-	$mainCssUrl  = $themeUrl . '/style.css';
-	$mainCssPath = get_template_directory() . '/style.css';
-	$mainCssVer  = file_exists( $mainCssPath ) ? filemtime( $mainCssPath ) : '';
 
-	wp_enqueue_style( 'superiocity-style', $mainCssUrl, null, $mainCssVer );
-	wp_deregister_script( 'wp-embed' );
-}
+	/**
+	 * Adds scripts and styles to the footer of the pages.
+	 */
+	public function scripts_styles_footer() {
+		if ( is_admin() ) {
+			return;
+		}
 
-add_action( 'wp_enqueue_scripts', 'superiocity_scripts_styles' );
+		$theme_url    = get_template_directory_uri();
+		$fa_ver       = '4.5.0';
+		$fa_url       = "//maxcdn.bootstrapcdn.com/font-awesome/$fa_ver/css/font-awesome.min.css";
+		$g_font_url   = '//fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,700italic,400italic|Quicksand:300';
+		$main_js_url  = $theme_url . '/js/main.min.js';
+		$main_js_path = get_template_directory() . '/js/main.min.js';
+		$main_js_ver  = file_exists( $main_js_path ) ? filemtime( $main_js_path ) : '';
 
-
-function superiocity_scripts_styles_footer() {
-	if ( is_admin() ) {
-		return;
+		wp_enqueue_style( 'fa-style', $fa_url, null, $fa_ver );
+		wp_enqueue_style( 'gfont', $g_font_url );
+		wp_enqueue_script( 'superiocity-script', $main_js_url, null, $main_js_ver, true );
 	}
-
-	$themeUrl    = get_template_directory_uri();
-	$faVer       = '4.5.0';
-	$faUrl       = "//maxcdn.bootstrapcdn.com/font-awesome/$faVer/css/font-awesome.min.css";
-	$gFontUrl    = '//fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,700italic,400italic|Quicksand:300';
-	$mainJsUrl   = $themeUrl . '/js/main.min.js';
-	$mainJsPath  = get_template_directory() . '/js/main.min.js';
-	$mainJsVer   = file_exists( $mainJsPath ) ? filemtime( $mainJsPath ) : '';
-
-	wp_enqueue_style( 'fa-style', $faUrl, null, $faVer );
-	wp_enqueue_style( 'gfont', $gFontUrl );
-	wp_enqueue_script( 'superiocity-script', $mainJsUrl, null, $mainJsVer, true );
 }
-
-add_action( 'get_footer', 'superiocity_scripts_styles_footer' );
-
-
-/**
- * Hide the admin bar for all users
- */
-add_filter( 'show_admin_bar', '__return_false' );
-
-
