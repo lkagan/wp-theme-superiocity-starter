@@ -12,23 +12,25 @@
     <div class="header-wrapper">
 		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">
-				<?php
-				if ( $super_logo = get_theme_mod( 'super_logo' ) ) {
-						echo wp_get_attachment_image( get_theme_mod( 'super_logo' ), 'full', false, 'class=logo' );
-                } ?>
-                <div class="text">
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                <a href="/">
 					<?php
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
-					<?php endif; ?>
-                </div><!-- .text -->
+					if ( $super_logo = get_theme_mod( 'super_logo' ) ) {
+							echo wp_get_attachment_image( get_theme_mod( 'super_logo' ), 'full', false, 'class=logo' );
+					} ?>
+					<div class="text">
+						<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+						<?php
+						$description = get_bloginfo( 'description', 'display' );
+						if ( $description || is_customize_preview() ) : ?>
+							<h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
+						<?php endif; ?>
+					</div><!-- .text -->
+				</a>
 			</div><!-- .site-branding -->
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-open" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
 				<div class="main-nav-wrapper">
-                    <a href="#" class="menu-close">close <i class="fa fa-angle-right"></i></a>
+                    <a href="#" class="menu-close"><i class="fa fa-close"></i></a>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 				</div><!-- .main-nav-wrapper -->
 			</nav><!-- #site-navigation -->
