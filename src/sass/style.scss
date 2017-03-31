@@ -95,6 +95,7 @@ input[type=text], input[type=password], input[type=tel], input[type=email] {
   }
 }
 
+
 img {
   max-width: 100%;
   width: auto;
@@ -141,6 +142,10 @@ img {
   .logo {
     margin: .25em 0 0 .25em;
   }
+
+  .text {
+
+  }
 }
 
 p.site-description {
@@ -167,6 +172,10 @@ p.site-description {
   right: 0;
 }
 
+.menu-open:hover {
+  background-color: transparent;
+}
+
 .main-navigation {
   text-align: right;
 }
@@ -180,7 +189,7 @@ p.site-description {
 }
 
 .menu-main-menu-container {
-  margin-top: 2.5em;
+  margin-top: 1.5em;
 }
 
 .main-nav-wrapper {
@@ -203,8 +212,10 @@ p.site-description {
 
   .menu-close {
     position: absolute;
-    right: 1em;
-    font-size: .85em;
+    right: 10px;
+    top: 10px;
+    font-size: 1.5em;
+    line-height: 1em;
   }
 
   ul {
@@ -231,7 +242,7 @@ p.site-description {
 }
 
 .main-nav-wrapper i {
-  margin-right: .3em;
+  margin-right: .5em;
 }
 
 
@@ -357,8 +368,12 @@ p.site-description {
   }
 
   .site-branding .logo {
-    float: left;
     margin-right: 1em;
+  }
+
+  .site-branding .text {
+    display: inline-block;
+    vertical-align: top;
   }
 
   .footer-widgets {
@@ -371,7 +386,6 @@ p.site-description {
   }
 
   .site-branding .text {
-    float: left;
     text-align: center;
   }
 
