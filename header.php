@@ -3,6 +3,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php wp_head(); ?>
 </head>
@@ -12,17 +13,17 @@
 		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">
 				<?php
-				if ( $super_logo = get_theme_mod( 'super_logo' ) ) :
-						echo wp_get_attachment_image( get_theme_mod( 'super_logo' ) );
-				else :
-					?><h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php endif;
-
-				$description = get_bloginfo( 'description', 'display' );
-				if ( $description || is_customize_preview() ) : ?>
-					<h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
-				<?php
-				endif; ?>
+				if ( $super_logo = get_theme_mod( 'super_logo' ) ) {
+						echo wp_get_attachment_image( get_theme_mod( 'super_logo' ), 'full', false, 'class=logo' );
+                } ?>
+                <div class="text">
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<?php
+					$description = get_bloginfo( 'description', 'display' );
+					if ( $description || is_customize_preview() ) : ?>
+						<h2 class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></h2>
+					<?php endif; ?>
+                </div><!-- .text -->
 			</div><!-- .site-branding -->
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-open" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
@@ -42,7 +43,24 @@
 		<div class='hero-container-wrapper'>
 			<div class="hero-container" id="hero-container">
 				<section class="hero">
-                    <video src="https://www.superiocity.com/wp-content/themes/superiocity.com/bubbles.mp4" autoplay loop poster="https://www.superiocity.com/wp-content/themes/superiocity.com/images/bubbles-poster.jpg">
+					<?php
+					$super_webm        = get_field( 'webm' );
+					$super_mp4         = get_field( 'mp4' );
+					$super_poster      = get_field( 'poster_image' )->url;
+					$super_primary_vid = $super_mp4 ?? $super_webm;
+
+					if ( $super_primary_vid ) : ?>
+                    <video src="<?php echo $super_primary_vid ?>"
+                           autoplay loop
+                           poster="<?php echo $super_poster ?>">
+                        <?php if ( $super_mp4 ) : ?>
+                        <source src="<?php echo $super_mp4 ?>">
+                        <?php endif; ?>
+	                    <?php if ( $super_webm ) : ?>
+                            <source src="<?php echo $super_webm ?>">
+	                    <?php endif; ?>
+					<?php endif; ?>
+                        <div class="call-to-action"><?php echo get_theme_mod( 'super_call_to_action' ) ?></div>
 				</section>
 			</div><!-- .hero-container -->
 		</div><!-- .hero-conteiner-wrapper -->

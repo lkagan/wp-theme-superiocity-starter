@@ -89,13 +89,11 @@ class Theme_Setup {
 		$theme_url    = get_template_directory_uri();
 		$fa_ver       = '4.5.0';
 		$fa_url       = "//maxcdn.bootstrapcdn.com/font-awesome/$fa_ver/css/font-awesome.min.css";
-		$g_font_url   = '//fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,700italic,400italic|Quicksand:300';
 		$main_js_url  = $theme_url . '/js/main.min.js';
 		$main_js_path = get_template_directory() . '/js/main.min.js';
 		$main_js_ver  = file_exists( $main_js_path ) ? filemtime( $main_js_path ) : '';
 
 		wp_enqueue_style( 'fa-style', $fa_url, null, $fa_ver );
-		wp_enqueue_style( 'gfont', $g_font_url );
 		wp_enqueue_script( 'superiocity-script', $main_js_url, null, $main_js_ver, true );
 	}
 
@@ -107,7 +105,12 @@ class Theme_Setup {
 	 */
 	public function customizer_updates( \WP_Customize_Manager $customizer ) {
 
-		$customizer->add_setting( 'super_logo', array( 'sanitize_callback' => 'absint' ) );
+		// Custom logo.
+		$customizer->add_setting(
+			'super_logo',
+			array( 'sanitize_callback' => 'absint' )
+		);
+
 		$customizer->add_control(
 			new \WP_Customize_Media_Control(
 				$customizer,
@@ -118,6 +121,18 @@ class Theme_Setup {
 					'mime_type' => 'image',
 				)
 			)
+		);
+
+		// Custom call to action.
+		$customizer->add_setting( 'super_call_to_action' );
+
+		$customizer->add_control(
+			'super_call_to_action',
+			array(
+				'label'   => 'Call to action',
+				'section' => 'title_tagline',
+				'type'    => 'textarea'
+				)
 		);
 	}
 

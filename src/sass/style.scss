@@ -29,6 +29,10 @@ body {
   height: 100vh;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2em;
+}
+
 #wpadminbar {
   position: absolute;
   top: 0;
@@ -36,7 +40,6 @@ body {
 
 p, li {
   line-height: 1.2em;
-  font-family: $font-content;
 }
 
 li {
@@ -62,6 +65,15 @@ input, button {
 
 .button {
   -webkit-appearance: none;
+}
+
+button, .button, input[type=submit], input[type=button] {
+  padding: .5rem 1rem;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  border-radius: .25em;
+  text-decoration: none;
 }
 
 input[type=text], input[type=password], input[type=tel], input[type=email] {
@@ -104,6 +116,7 @@ img {
 }
 
 .header-wrapper {
+  flex-shrink: 0;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -119,6 +132,11 @@ img {
   white-space: nowrap;
   text-align: center;
   width: 100%;
+
+  h1 a {
+    color: #fff;
+    text-decoration: none;
+  }
 
   .logo {
     margin: .25em 0 0 .25em;
@@ -194,7 +212,7 @@ p.site-description {
   }
 
   ul li {
-    padding: 0 1em;
+    padding: 0 1.5em;
     list-style: none;
     border-bottom: #444 1px solid;
     text-align: left;
@@ -236,14 +254,10 @@ p.site-description {
 .hero-container {
   position: relative;
   overflow: hidden;
-  max-width: 1680px;
   margin: 0 auto;
 }
 
 .hero video {
-  position: absolute;
-  min-width: 100%;
-  min-height: 100%;
 }
 
 .alignright {
@@ -259,6 +273,7 @@ p.site-description {
 }
 
 .site-footer {
+  flex-shrink: 0;
   font-size: .75em;
   line-height: 1.5em;
   text-align: center;
@@ -341,12 +356,27 @@ p.site-description {
     margin-top: 0;
   }
 
+  .site-branding .logo {
+    float: left;
+    margin-right: 1em;
+  }
+
   .footer-widgets {
     flex-wrap: nowrap;
   }
 
   .site-branding {
     width: auto;
+    text-align: left;
+  }
+
+  .site-branding .text {
+    float: left;
+    text-align: center;
+  }
+
+  .site-branding > div {
+    flex-grow: 1;
   }
 
   .extra_header_section {
@@ -437,18 +467,3 @@ p.site-description {
     border-radius: .25em;
   }
 }
-
-
-@media screen and (min-width: 1400px) {
-  body {
-    font-size: 22px;
-  }
-}
-
-
-@media screen and (min-width: 1800px) {
-  body {
-    font-size: 24px;
-  }
-}
-
