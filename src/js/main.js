@@ -28,14 +28,19 @@
             document.getElementById('google-map').classList.remove('scrolloff');
         });
 
-        setContentTopMargin();
+        // Toggle header class if scrolled
+        if ( document.body.scrollTop !== 0 ) {
+            document.getElementsByClassName('header-wrapper')[0].classList.remove('at-top');
+        } else {
+            document.getElementsByClassName('header-wrapper')[0].classList.add('at-top');
+        }
+
+        //setContentTopMargin();
     });
 
-    window.addEventListener('resize', setContentTopMargin);
+    //window.addEventListener('resize', setContentTopMargin);
     document.addEventListener( 'click', closeMenu);
     document.addEventListener( 'touchstart', closeMenu);
-
-
 
     /**
      * Add enough margin to the content to push it below the header

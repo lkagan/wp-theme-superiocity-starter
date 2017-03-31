@@ -1,21 +1,22 @@
-<?php
-/**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- */
-
-?>
-
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<span class="footer-item">&copy; <?php echo date('Y') . ' ' . get_bloginfo( 'name' ) ?></span>
-		<span class="sep">|</span>
-		<span class="footer-item signature"><a target="superiocity" href="http://www.superiocity.com">Website by Superiocity</a></span>
-	</footer><!-- #colophon -->
+	<footer class="site-footer" role="contentinfo">
+		<?php if ( is_active_sidebar( 'footer' ) ) : ?>
+            <div class="footer-widgets">
+				<?php dynamic_sidebar( 'footer' ); ?>
+            </div>
+		<?php endif; ?>
+        <div class="copyright-line">
+			<span class="footer-item">&copy; <?php echo date('Y') . ' ' . get_bloginfo( 'name' ) ?></span>
+			<?php if ( is_active_sidebar( 'copyright' ) ) : ?>
+				<span class="footer-item">
+					<?php dynamic_sidebar( 'copyright' ); ?>
+				</span>
+			<?php endif; ?>
+			<span class="sep">|</span>
+			<span class="footer-item signature"><a target="superiocity" href="http://www.superiocity.com">Website by Superiocity</a></span>
+        </div><!-- .signature-line -->
+	</footer><!-- .site-footer -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
