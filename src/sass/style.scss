@@ -95,6 +95,9 @@ input[type=text], input[type=password], input[type=tel], input[type=email] {
   }
 }
 
+.centered-content {
+  margin: 0 1em;
+}
 
 img {
   max-width: 100%;
@@ -268,9 +271,6 @@ p.site-description {
   margin: 0 auto;
 }
 
-.hero video {
-}
-
 .alignright {
   float: right; margin: 0 0 1em;
 }
@@ -376,8 +376,10 @@ p.site-description {
     vertical-align: top;
   }
 
-  .footer-widgets {
-    flex-wrap: nowrap;
+  .centered-content {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
   }
 
   .site-branding {
@@ -479,5 +481,9 @@ p.site-description {
     top: auto;
     opacity: 1;
     border-radius: .25em;
+  }
+
+  .footer-widgets {
+    flex-wrap: nowrap;
   }
 }
