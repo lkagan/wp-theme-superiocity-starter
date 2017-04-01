@@ -87,7 +87,7 @@ class Theme_Setup {
 		}
 
 		$theme_url    = get_template_directory_uri();
-		$fa_ver       = '4.5.0';
+		$fa_ver       = '4.7.0';
 		$fa_url       = "//maxcdn.bootstrapcdn.com/font-awesome/$fa_ver/css/font-awesome.min.css";
 		$main_js_url  = $theme_url . '/js/main.min.js';
 		$main_js_path = get_template_directory() . '/js/main.min.js';
