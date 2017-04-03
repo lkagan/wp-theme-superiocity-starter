@@ -35,7 +35,7 @@
             document.getElementsByClassName('header-wrapper')[0].classList.add('at-top');
         }
 
-        //setContentTopMargin();
+        iosCusomize();
     });
 
     //window.addEventListener('resize', setContentTopMargin);
@@ -112,6 +112,27 @@
         }
 
         return false;
+    }
+
+    /**
+     * iOS-specific customizations.
+     */
+    function iosCusomize() {
+        var iOS = /iPad|iPhone|iPod|CriOS/.test(navigator.userAgent) && !window.MSStream;
+
+        if (!iOS) {
+            return;
+        }
+
+        // Change fixed background images from fixed to inherit.
+        var fixedBgs = document.getElementsByClassName('fixed');
+
+        if (fixedBgs !== undefined) {
+            for(var i = 0; i < fixedBgs.length; ++i) {
+                fixedBgs[i].style.backgroundAttachment = 'inherit';
+            }
+        }
+
     }
 
 })();

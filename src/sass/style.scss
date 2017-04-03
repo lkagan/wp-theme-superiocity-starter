@@ -248,13 +248,12 @@ p.site-description {
   margin-right: .5em;
 }
 
-
 .site-content {
   max-width: 100vw;
   overflow: hidden;
 }
 
-.home .hero {
+.home .hero-container {
   background-size: cover;
   height: 60vh;
   margin: 0 auto;
@@ -263,12 +262,17 @@ p.site-description {
 
 .hero-container-wrapper {
   background-color: #000;
+  position: relative;
 }
 
 .hero-container {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
+}
+
+.home .hero {
+  height: 100%;
 }
 
 .alignright {
