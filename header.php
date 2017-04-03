@@ -43,7 +43,7 @@
     </div><!-- .header-wrapper -->
 	<div id="content" class="site-content">
 		<div class='hero-container-wrapper'>
-			<div class="hero-container" id="hero-container">
+			<div class="hero-container fixed" id="hero-container">
 				<section class="hero">
 					<?php
 					$super_webm        = get_field( 'webm' );
@@ -62,7 +62,10 @@
                             <source src="<?php echo $super_webm ?>">
 	                    <?php endif; ?>
 					<?php endif; ?>
-                        <div class="call-to-action"><?php echo get_theme_mod( 'super_call_to_action' ) ?></div>
 				</section>
 			</div><!-- .hero-container -->
+            <div class="call-to-action"><?php echo get_theme_mod( 'super_call_to_action' ) ?></div>
+			<?php if ( ! is_front_page() ) : ?>
+                <h1 class="page-title"><?php echo get_the_title( $GLOBALS['post_id'] ); ?></h1>
+			<?php endif; ?>
 		</div><!-- .hero-conteiner-wrapper -->

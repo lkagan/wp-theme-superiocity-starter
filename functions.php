@@ -94,6 +94,7 @@ class Theme_Setup {
 		$main_js_ver  = file_exists( $main_js_path ) ? filemtime( $main_js_path ) : '';
 
 		wp_enqueue_style( 'fa-style', $fa_url, null, $fa_ver );
+		wp_enqueue_style( 'gfont', 'https://fonts.googleapis.com/css?family=Handlee' );
 		wp_enqueue_script( 'superiocity-script', $main_js_url, null, $main_js_ver, true );
 	}
 
