@@ -7,7 +7,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php wp_head(); ?>
 </head>
-<body <?php body_class( ! is_front_page() ? 'inner' : '' ); ?>>
+<body <?php body_class( ( ! is_front_page() ? 'inner' : '' ) . ' ' . get_post_field( 'post_name', get_post() ) ); ?>>
 <div id="page" class="site">
     <div class="header-wrapper">
 		<header id="masthead" class="site-header" role="banner">
