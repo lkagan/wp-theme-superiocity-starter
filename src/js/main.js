@@ -28,6 +28,17 @@
             document.getElementById('google-map').classList.remove('scrolloff');
         });
 
+        // Disable the google map iframe from capturing scroll until clicked.
+        document.addEventListener('click', function() {
+            var map = document.getElementById('google-map');
+
+            if(map == undefined) {
+                return true;
+            }
+
+            document.getElementById('google-map').classList.remove('scrolloff');
+        });
+
         // Toggle header class if scrolled
         if ( document.body.scrollTop !== 0 ) {
             document.getElementsByClassName('header-wrapper')[0].classList.remove('at-top');

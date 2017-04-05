@@ -287,6 +287,10 @@ p.site-description {
   position: relative;
 }
 
+.scrolloff {
+  pointer-events: none;
+}
+
 .site-footer {
   flex-shrink: 0;
   font-size: .75em;
