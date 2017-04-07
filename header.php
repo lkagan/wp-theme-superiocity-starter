@@ -68,4 +68,7 @@
 			<?php if ( ! is_front_page() ) : ?>
                 <h1 class="page-title"><?php echo get_the_title( $GLOBALS['post_id'] ); ?></h1>
 			<?php endif; ?>
+            <?php if ( is_404() ) : ?>
+                <h1 class="page-title"><?php echo __( 'Page Not Found', 'superiocity' ); ?></h1>
+            <?php endif; ?>
 		</div><!-- .hero-conteiner-wrapper -->
