@@ -54,35 +54,6 @@
     document.addEventListener( 'touchstart', closeMenu);
 
     /**
-     * Add enough margin to the content to push it below the header
-     * since the header is fixed.
-     */
-    function setContentTopMargin()
-    {
-        document.getElementById('content').style.marginTop =
-            document.getElementById('masthead').clientHeight + 'px';
-    }
-
-
-    /**
-     * Check if an element is within the window viewport.
-     */
-    function inViewport(element)
-    {
-        if(element == undefined) {
-            return false;
-        }
-
-        var boundingBox = element.getBoundingClientRect();
-        var windowHeight = document.documentElement.clientHeight;
-
-        if(boundingBox.bottom < windowHeight && boundingBox.top > 0) {
-            return true;
-        }
-    }
-
-
-    /**
      *  Close the the main nav if clicking or tapping outside of the nav on small screens.
      *
      * @param event
@@ -106,26 +77,6 @@
 
 
     /**
-     * Is the given node a child of the supplied parent?
-     *
-     * @param node
-     * @param parent
-     * @returns {boolean}
-     */
-    function isChild(node, parent)
-    {
-        while ( node.parentNode !== null ) {
-            if ( node === parent ) {
-                return true;
-            }
-
-            node = node.parentNode;
-        }
-
-        return false;
-    }
-
-    /**
      * iOS-specific customizations.
      */
     function iosCusomize() {
@@ -147,3 +98,58 @@
     }
 
 })();
+
+
+/**
+ * Add enough margin to the content to push it below the header
+ * since the header is fixed.
+ */
+function setContentTopMargin()
+{
+    document.getElementById('content').style.marginTop =
+        document.getElementById('masthead').clientHeight + 'px';
+}
+
+
+/**
+ * Check if an element is within the window viewport.
+ */
+function inViewport(element, padding)
+{
+    if(element == undefined) {
+        return false;
+    }
+
+    padding = padding || 0;
+    var boundingBox = element.getBoundingClientRect();
+    var windowHeight = document.documentElement.clientHeight;
+    var topLimit = padding;
+    var bottomLimit = windowHeight - padding;
+
+    if ( ( boundingBox.top > topLimit || boundingBox.bottom > topLimit ) &&
+        ( boundingBox.top < bottomLimit || boundingBox.bottom < bottomLimit ) ) {
+        return true;
+    }
+
+}
+
+
+/**
+ * Is the given node a child of the supplied parent?
+ *
+ * @param node
+ * @param parent
+ * @returns {boolean}
+ */
+function isChild(node, parent)
+{
+    while ( node.parentNode !== null ) {
+        if ( node === parent ) {
+            return true;
+        }
+
+        node = node.parentNode;
+    }
+
+    return false;
+}
