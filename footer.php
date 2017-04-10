@@ -14,7 +14,7 @@
 				</span>
 			<?php endif; ?>
 			<span class="sep">|</span>
-			<span class="footer-item signature"><a target="superiocity" href="http://www.superiocity.com">Website by Superiocity</a></span>
+			<span class="footer-item signature"><a target="superiocity" rel="nofollow" href="http://www.superiocity.com">Website by Superiocity</a></span>
         </div><!-- .signature-line -->
 	</footer><!-- .site-footer -->
 </div><!-- #page -->
