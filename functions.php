@@ -25,7 +25,7 @@ class Theme_Setup {
 		add_action( 'get_footer', array( $this, 'scripts_styles_footer' ) );
 		add_action( 'customize_register', array( $this, 'customizer_updates' ) );
 		add_action( 'widgets_init', array( $this, 'add_widget_areas' ) );
-
+		add_filter( 'show_admin_bar', '__return_false' );
 	}
 
 
